@@ -1,0 +1,100 @@
+Colocando algumas informações sobre as linguagens do Git
+
+Git e Git Hub
+
+GUI vs CLI
+GUI - Graphic User Interface
+CLI - Command Line Interface
+
+Atalhos e Comandos para o CMD (Prompt de Comando Windows)
+
+dir - Listar o que está na pasta
+cd - Para andar pelas pastas
+barra (/) - para andar pra frente
+dois pontos (..) para andar pra tras
+cls - [clear screen] - Limpar o terminal
+tab - Ajuda a completar alguns comandos e nome de pastas
+mkdir [Make Directory] - Criar uma pasta
+echo - Apenas printa no cmd algo que você digitar
+“>” - Faz aquilo que você digitou ser salvo em algo
+echo hello > hello.txt
+Ou seja, “printei” hello no cmd e salvei ele em um arquivo de texto chamado hello
+del - Deleta arquivos
+rmdir [remove directory] - Para remover um diretório com todos os arquivos que tem dentro.
+dir -a = Mostra arquivos ocultos
+
+SHA1 - É uma criptografia onde ele transforma qualquer texto, seja ele grande ou pequeno, em uma string de 40 dígitos.
+
+
+echo conteudo | git hash-object --stdin
+
+BLOBS - São como bolhas que guardam algumas informações dos objetos chamados metadados como o tipo do objeto, tamanho, barra contrária + 0 e o texto do arquivo.
+
+TREES - [Árvores] - Armazena os blobs que também contém metadados. Pode apontar para outras trees e para blobs
+A árvore tbm muda quando uma árvore ou bolha dentro ligado a essa árvore muda
+COMMITS - Aponta para uma árvore, parente, autor e mensagem
+Tem carimbo de tempo
+Possui também sha1
+
+GIT NA PRÁTICA
+
+git init
+git add
+git commit
+
+
+
+
+
+
+Tracked - Arquivos que o GIT conhece
+Unmodified - Arquivos não modificados
+Modified - Arquivos modificados
+Staged - Atrás do palco
+Untracked - Arquivos que o GIT ainda não conhece
+
+Quando criamos o arquivo de receita do strogonoff, tínhamos criado o repositório com o GIT INIT com a receita, porém o GIT ainda não sabia da existência deste arquivo, por isso, ele ainda era UNTRACKED. Quando rodamos o GIT ADD, o GIT mandou este arquivo para STAGED, para ficar como de standby, em uma área para aguardar algo ou alguma ação. Após isso, para commitar este arquivo, eu digito git commit -m “texto informando o que foi alterado” 
+
+
+
+
+BRANCHES
+
+Pasta = REPOSITÓRIO
+Branches - Galhos (Ramificações)
+
+MAIN OU MASTER
+MASTER era o nome obrigatório para a branch principal. Atualmente o git deixa escolher o nome da branch principal, que por convenção pode ser o nome MAIN. Porém, caso isso não seja bem definido na criação da branch local e na branch remota, podemos ter problemas com o versionamento da branch principal.
+
+HEAD
+Essa tag HEAD mostra onde você está, ou seja, em qual branch você está trabalhando naquele momento.
+
+git checkout - Serve para se movimentar entre as branches
+git checkout -b nova-funcionalidade - Serve para já criar uma branch e se movimentar pra ela
+git branch - Lista as branch que tenho localmente
+git branch -m nome-novo-da-branch - Renomeia a branch que você está
+git branch -m nome-velho-da-branch nome-novo-da-branch - Renomeia a branch que você indicou como Nome velho
+git branch -d nome-branch - Deleta a branch informada
+stash - Como se fosse uma caixa onde eu posso guardar o histórico das alterações que faço nos meus trabalhos
+git stash list - Lista os stashes que tenho salvo
+git stash save - Ele tira os arquivos que estão na stage area (index), ou seja, em tese, os arquivos que estou trabalhando no momento, que não foram “comittados” e salva no stash
+git stash pop 1 - Ele está trazendo de volta para a stage area (index) aquela parte que salvei no índice 1.
+git stash clear - Deleta os itens que temos na stash
+
+GIT LOG
+git log - mostra os logs do repositório inteiro
+git log README.md - Mostra o repostório da pasta ou arquivo que informei
+git log --oneline - Traz os logs mais resumidos para melhor visualização
+git log --graph - Traz os logs organizados um pouco mais graficamente
+gitk - Sistema que já vem com o git para visualizar logs de forma gráfica
+
+GIT DESKTOP - Sistema que já vem com o git para visualizar logs de forma gráfica
+
+GIT RESET - São comandos para reverter commits
+
+git reset --soft HEAD~1 - O comando --soft serve para reverter os arquivos daquele commit informado para o Index (Staging Area)
+git reset --mixed - O comando --mixed serve para reverter os arquivos daquele commit informado para o Working Directory (Ou seja, antes do git add e do commit)
+git reset --hard - O comando --hard vai LIMPAR aquele commit
+git reset --force
+
+GIT REVERT
